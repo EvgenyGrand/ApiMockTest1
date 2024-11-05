@@ -1,9 +1,12 @@
-public class ResponseData {
+package dto;
+
+public class RegistrationCashLinkDto {
     private String code;
     private String message;
     private Data data;
 
-    public ResponseData(String code, String message, Data data) {
+
+    public RegistrationCashLinkDto(String code, String message, Data data) {
         this.code = code;
         this.message = message;
         this.data = data;
