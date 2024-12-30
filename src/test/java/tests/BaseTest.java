@@ -4,7 +4,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import io.restassured.path.json.JsonPath;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
-import service.WireMockSetup;
+import service.WireMockServerSetup;
 
 public abstract class BaseTest {
 
@@ -12,12 +12,14 @@ public abstract class BaseTest {
 
     public static String qrcId = null;
 
-        protected WireMockSetup wireMockSetup;
+        public WireMockServerSetup wireMockSetup;
 
         @BeforeEach
         public void setUp() throws JsonProcessingException {
-            wireMockSetup = new WireMockSetup();
+            wireMockSetup = new WireMockServerSetup();
             wireMockSetup.startServer();
+
+
         }
 
         @AfterEach

@@ -13,7 +13,6 @@ public class Specification {
         return new RequestSpecBuilder()
                 .setBaseUri(URL)
                 .setContentType(ContentType.JSON)
-                .addHeader("Merchant-Authorization", "IPSkorobogatov")
                 .addHeader("Content-Type", "application/json")
                 .build();
     }

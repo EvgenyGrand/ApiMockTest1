@@ -1,15 +1,16 @@
 package dto;
 
+
 public class RegistrationCashLinkDto {
     private String code;
     private String message;
-    private Data data;
+    private DataRegistration dataRegistration;
 
 
-    public RegistrationCashLinkDto(String code, String message, Data data) {
+    public RegistrationCashLinkDto(String code, String message, DataRegistration dataRegistration) {
         this.code = code;
         this.message = message;
-        this.data = data;
+        this.dataRegistration = dataRegistration;
     }
 
     public String getCode() {
@@ -28,25 +29,25 @@ public class RegistrationCashLinkDto {
         this.message = message;
     }
 
-    public Data getData() {
-        return data;
+    public DataRegistration getData() {
+        return dataRegistration;
     }
 
-    public void setData(Data data) {
-        this.data = data;
+    public void setData(DataRegistration dataRegistration) {
+        this.dataRegistration = dataRegistration;
     }
 
-    public static class Data {
+    public static class DataRegistration {
+
         private String qrcId;
+        private String payload;
+        private String status;
 
-        public Data(String qrcId, String payload, String status) {
+        public DataRegistration(String qrcId, String payload, String status) {
             this.qrcId = qrcId;
             this.payload = payload;
             this.status = status;
         }
-
-        private String payload;
-        private String status;
 
         public String getQrcId() {
             return qrcId;
