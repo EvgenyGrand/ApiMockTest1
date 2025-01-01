@@ -18,8 +18,8 @@ public class WireMockServerSetup {
         WireMock.configureFor("localhost", 8080);
 
         // Настраиваем заглушки
-        RegistrationCashLinkMock registrationCashLinkMock = new RegistrationCashLinkMock();
-        registrationCashLinkMock.setupStub();
+        RegistrationCodeMock registrationCodeMock = new RegistrationCodeMock();
+        registrationCodeMock.setupStubRegistration();
     }
 
     public void stopServer() {
