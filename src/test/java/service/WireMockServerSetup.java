@@ -9,7 +9,7 @@ public class WireMockServerSetup {
 
     private WireMockServer wireMockServer;
 
-    public void startServer() throws JsonProcessingException {
+    public void startServer() {
         // Создаем экземпляр WireMockServer
         wireMockServer = new WireMockServer(WireMockConfiguration.options().port(8080));
         wireMockServer.start();
