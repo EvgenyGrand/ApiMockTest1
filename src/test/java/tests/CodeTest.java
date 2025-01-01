@@ -2,6 +2,7 @@ package tests;
 
 import apihelpers.EndPoints;
 import apihelpers.Specification;
+import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 
 import java.util.HashMap;
@@ -13,6 +14,7 @@ import static org.hamcrest.Matchers.equalTo;
 public class CodeTest extends BaseTest {
 
     @Test
+    @Order(1)
     public void registrationCodeTest() {
         Specification.installSpecification(Specification.requestSpec(EndPoints.baseUrl), Specification.responceSpecOk200());
         given()
@@ -25,6 +27,7 @@ public class CodeTest extends BaseTest {
     }
 
     @Test
+    @Order(2)
     public void activationCodeTest() {
         Map<String, String> activationCode = new HashMap<>();
         activationCode.put("code", "QWERTY123");
@@ -34,6 +37,6 @@ public class CodeTest extends BaseTest {
                 .when()
                 .post(EndPoints.postActivationationCode)
                 .then().log().all()
-                .body("data.code", equalTo("QWERTY123"));
+                .body("data.parameter", equalTo("UUID123"));
     }
 }
