@@ -20,6 +20,7 @@ public class WireMockServerSetup {
         // Настраиваем заглушки
         RegistrationCodeMock registrationCodeMock = new RegistrationCodeMock();
         registrationCodeMock.setupStubRegistration();
+        registrationCodeMock.setupStubActivation();
     }
 
     public void stopServer() {

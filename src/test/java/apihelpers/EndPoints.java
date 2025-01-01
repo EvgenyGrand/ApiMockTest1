@@ -6,4 +6,6 @@ public class EndPoints {
 
     public static String postRegistrationCode = "/code/registration";
 
+    public static String postActivationationCode = "/code/activation";
+
 }

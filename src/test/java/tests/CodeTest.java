@@ -4,8 +4,12 @@ import apihelpers.EndPoints;
 import apihelpers.Specification;
 import org.junit.jupiter.api.Test;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.equalTo;
+
 public class CodeTest extends BaseTest {
 
     @Test
@@ -20,5 +24,16 @@ public class CodeTest extends BaseTest {
                 .body("data.code", equalTo("QWERTY123"));
     }
 
-
+    @Test
+    public void activationCodeTest() {
+        Map<String, String> activationCode = new HashMap<>();
+        activationCode.put("code", "QWERTY123");
+        Specification.installSpecification(Specification.requestSpec(EndPoints.baseUrl), Specification.responceSpecOk200());
+        given()
+                .body(activationCode)
+                .when()
+                .post(EndPoints.postActivationationCode)
+                .then().log().all()
+                .body("data.code", equalTo("QWERTY123"));
+    }
 }

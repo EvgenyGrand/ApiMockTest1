@@ -9,4 +9,11 @@ public class MockResponse {
             "    }\n" +
             "}";
 
+    public static final String activationCodeResponse = "{\n" +
+            "    \"message\": \"Запрос обработан успешно\",\n" +
+            "    \"data\": {\n" +
+            "        \"parameter\": \"UUID123\",\n" +
+            "    }\n" +
+            "}";
+
 }
