@@ -2,6 +2,7 @@ package tests;
 
 import apihelpers.EndPoints;
 import apihelpers.Specification;
+import io.qameta.allure.Description;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 
@@ -15,6 +16,7 @@ public class CodeTest extends BaseTest {
 
     @Test
     @Order(1)
+    @Description("Тест на проверку регистрации qr ")
     public void registrationCodeTest() {
         Specification.installSpecification(Specification.requestSpec(EndPoints.baseUrl), Specification.responceSpecOk200());
         given()
@@ -28,6 +30,7 @@ public class CodeTest extends BaseTest {
 
     @Test
     @Order(2)
+    @Description("Тест на проверку активации qr ")
     public void activationCodeTest() {
         Map<String, String> activationCode = new HashMap<>();
         activationCode.put("code", "QWERTY123");
