@@ -9,6 +9,9 @@ import service.WireMockServerSetup;
 
 public abstract class BaseTest extends ApiHelpers {
 
+
+    public static String code;
+
         public WireMockServerSetup wireMockSetup;
 
         @BeforeEach

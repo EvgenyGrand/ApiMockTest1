@@ -1,5 +1,7 @@
 package apihelpers;
 
+import tests.BaseTest;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -12,9 +14,9 @@ public class RequestsBody {
         return registrationQr;
     }
 
-    public static Map activationQr(){
+    public static Map activationQr(String code){
         Map<String, Object> activationCode = new HashMap<>();
-        activationCode.put("code", "QWERTY123");
+        activationCode.put("code",code );
         return activationCode;
     }
 }

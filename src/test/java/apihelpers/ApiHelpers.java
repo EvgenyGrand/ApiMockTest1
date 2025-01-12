@@ -1,5 +1,8 @@
 package apihelpers;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import io.qameta.allure.Allure;
 import io.qameta.allure.Step;
 import io.restassured.RestAssured;
 import io.restassured.builder.RequestSpecBuilder;
@@ -36,9 +39,25 @@ public class ApiHelpers extends RequestsBody{
         RestAssured.responseSpecification = responce;
     }
 
+    public static void attacheRequestBodyToAllureReport(Object body){
+        try {
+            Allure.addAttachment("Тело запроса", "application/json", new ObjectMapper().writerWithDefaultPrettyPrinter().writeValueAsString(body));
+        } catch (JsonProcessingException e) {
+            Allure.addAttachment("Тело запроса", "text/plain", body.toString(), "txt");
+        }
+    }
+
+    public static void attacheResponseBodyToAllureReport(Response response){
+        try {
+            Allure.addAttachment("Тело ответа", "application/json", response.getBody().prettyPrint());
+        } catch (Exception e) {
+            Allure.addAttachment("Тело ответа", "text/plain", response.getBody().prettyPrint(), "txt");
+        }
+    }
+@Step("Отправляем post запрос на адрес {url} ")
     public static Response postRequestWithBody(String url, Map body) {
         ApiHelpers.installSpecification(ApiHelpers.requestSpec(EndPoints.baseUrl), ApiHelpers.responceSpec());
-
+        attacheRequestBodyToAllureReport(body);
         Response response = given()
                 .log().all()
                 .body(body)
