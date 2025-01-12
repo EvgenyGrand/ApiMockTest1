@@ -9,9 +9,13 @@ import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 import io.restassured.specification.ResponseSpecification;
 
+import java.util.HashMap;
+import java.util.IdentityHashMap;
+import java.util.Map;
+
 import static io.restassured.RestAssured.given;
 
-public class ApiHelpers {
+public class ApiHelpers extends RequestsBody{
 
     @Step("Отправляем запрос на регистрацию qr по адресу {url}")
     public static RequestSpecification requestSpec(String URL){
@@ -31,12 +35,13 @@ public class ApiHelpers {
         RestAssured.requestSpecification = request;
         RestAssured.responseSpecification = responce;
     }
-    @Step("Отправляем запрос на регистрацию qr")
-    public static Response postRequestWithBody(String url) {
+
+    public static Response postRequestWithBody(String url, Map body) {
         ApiHelpers.installSpecification(ApiHelpers.requestSpec(EndPoints.baseUrl), ApiHelpers.responceSpec());
 
         Response response = given()
-                .body("{}")
+                .log().all()
+                .body(body)
                 .when()
                 .post(url)
                 .then().log().all()
@@ -44,6 +49,7 @@ public class ApiHelpers {
 
         return response; // Возвращаем ответ
     }
+
 
 }
 

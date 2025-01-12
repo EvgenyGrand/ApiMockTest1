@@ -9,14 +9,10 @@ import service.WireMockServerSetup;
 
 public abstract class BaseTest extends ApiHelpers {
 
-    JsonPath jsonPath;
-
-    public static String qrcId = null;
-
         public WireMockServerSetup wireMockSetup;
 
         @BeforeEach
-        public void setUp() throws JsonProcessingException {
+        public void setUp() {
             wireMockSetup = new WireMockServerSetup();
             wireMockSetup.startServer();
 

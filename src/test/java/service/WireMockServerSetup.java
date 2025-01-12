@@ -18,9 +18,9 @@ public class WireMockServerSetup {
         WireMock.configureFor("localhost", 8080);
 
         // Настраиваем заглушки
-        RegistrationCodeMock registrationCodeMock = new RegistrationCodeMock();
-        registrationCodeMock.setupStubRegistration();
-        registrationCodeMock.setupStubActivation();
+        StubsService stubsService = new StubsService();
+        stubsService.setupStubRegistration();
+        stubsService.setupStubActivation();
     }
 
     public void stopServer() {
