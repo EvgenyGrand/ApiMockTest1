@@ -27,7 +27,7 @@ public class CommonResponce {
         String validationMessage = "Значение поля " + fieldName + " совпадает с ожидаемым значением: " + expectedValue;
         Object actualValue = response.jsonPath().get(fieldName);
         if (actualValue.equals(expectedValue)) {
-            Allure.addAttachment("Результаты проверки на соответствие фактического значения поля ожидаемому", "text/plain", validationMessage);
+            Allure.addAttachment("Результаты проверки на соответствие ожидаемого значения поля фактическому", "text/plain", validationMessage);
         } else {
             throw new AssertionError("Значение поля " + fieldName + " не совпадает с ожидаемым значением: " + expectedValue);
         }

@@ -7,6 +7,7 @@ import apihelpers.RequestsBody;
 import io.qameta.allure.*;
 import io.restassured.response.Response;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 
 
@@ -18,6 +19,7 @@ public class CodeTest extends BaseTest {
     @DisplayName("Тест на проверку регистрации qr ")
     @Severity(SeverityLevel.BLOCKER)
     @Test
+    @Order(1)
     @Step("Создание qr")
     public void registrationCodeTest() {
         Allure.step("Регистрация qr", () -> {
@@ -32,6 +34,7 @@ public class CodeTest extends BaseTest {
     @DisplayName("Тест на проверку активации qr ")
     @Severity(SeverityLevel.BLOCKER)
     @Test
+    @Order(2)
     @Step("Создание qr")
     public void activationCodeTest() {
         Allure.step("Регистрация qr", () -> {
