@@ -16,4 +16,12 @@ public class MockResponse {
             "    }\n" +
             "}";
 
+
+    public static final String getCodeInfoResponse = "{\n" +
+            "    \"message\": \"Запрос обработан успешно\",\n" +
+            "    \"data\": {\n" +
+            "        \"info\": \"UUID123\"\n" +
+            "    }\n" +
+            "}";
+
 }

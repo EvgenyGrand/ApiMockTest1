@@ -8,4 +8,5 @@ public class EndPoints {
 
     public static String postActivationationCode = "/code/activation";
 
+    public static String getCodeInfo = "/code/info";
 }

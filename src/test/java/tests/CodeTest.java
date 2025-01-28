@@ -49,5 +49,11 @@ public class CodeTest extends BaseTest {
             CommonResponce.checkStatusOk(response, 200);
             CommonResponce.checkFieldValue(response, "data.parameter", "UUID123");
         });
+
+        Allure.step("Получение информации о qr", () -> {
+            response = ApiHelpers.getRequestWithQueryParams(EndPoints.getCodeInfo, RequestsBody.getQrInfo(BaseTest.code));
+            CommonResponce.checkStatusOk(response, 200);
+            CommonResponce.checkFieldValue(response, "data.info", "UUID123");
+        });
     }
 }

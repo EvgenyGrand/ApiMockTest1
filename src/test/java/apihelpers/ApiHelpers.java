@@ -18,10 +18,9 @@ import java.util.Map;
 
 import static io.restassured.RestAssured.given;
 
-public class ApiHelpers extends RequestsBody{
+public class ApiHelpers extends RequestsBody {
 
-    @Step("Отправляем запрос на регистрацию qr по адресу {url}")
-    public static RequestSpecification requestSpec(String URL){
+    public static RequestSpecification requestSpec(String URL) {
         return new RequestSpecBuilder()
                 .setBaseUri(URL)
                 .setContentType(ContentType.JSON)
@@ -39,7 +38,7 @@ public class ApiHelpers extends RequestsBody{
         RestAssured.responseSpecification = responce;
     }
 
-    public static void attacheRequestBodyToAllureReport(Object body){
+    public static void attacheRequestBodyToAllureReport(Object body) {
         try {
             Allure.addAttachment("Тело запроса", "application/json", new ObjectMapper().writerWithDefaultPrettyPrinter().writeValueAsString(body));
         } catch (JsonProcessingException e) {
@@ -47,14 +46,25 @@ public class ApiHelpers extends RequestsBody{
         }
     }
 
-    public static void attacheResponseBodyToAllureReport(Response response){
+    public static void attacheResponseBodyToAllureReport(Response response) {
         try {
             Allure.addAttachment("Тело ответа", "application/json", response.getBody().prettyPrint());
         } catch (Exception e) {
             Allure.addAttachment("Тело ответа", "text/plain", response.getBody().prettyPrint(), "txt");
         }
     }
-@Step("Отправляем post запрос на адрес {url} ")
+
+    public static void attacheRequestParamsToAllureReport(Map<String, Object> queryParam) {
+        try {
+            Allure.addAttachment("Параметры запроса", "application/json",
+                    new ObjectMapper().writerWithDefaultPrettyPrinter().writeValueAsString(queryParam));
+        } catch (JsonProcessingException e) {
+            Allure.addAttachment("Параметры запроса", "text/plain", queryParam.toString(), "txt");
+        }
+    }
+
+
+    @Step("Отправляем post запрос на адрес {url} ")
     public static Response postRequestWithBody(String url, Map body) {
         ApiHelpers.installSpecification(ApiHelpers.requestSpec(EndPoints.baseUrl), ApiHelpers.responceSpec());
         attacheRequestBodyToAllureReport(body);
@@ -64,11 +74,23 @@ public class ApiHelpers extends RequestsBody{
                 .when()
                 .post(url)
                 .then().log().all()
-                .extract().response(); // Извлекаем ответ
-
-        return response; // Возвращаем ответ
+                .extract().response();
+        return response;
     }
 
-
+    @Step("Отправляем GET запрос на адрес {url} с параметрами {queryParam}")
+    public static Response getRequestWithQueryParams(String url, Map queryParam) {
+        ApiHelpers.installSpecification(ApiHelpers.requestSpec(EndPoints.baseUrl), ApiHelpers.responceSpec());
+        attacheRequestParamsToAllureReport(queryParam);
+        Response response = given()
+                .log().all()
+                .queryParams(queryParam)
+                .when()
+                .get(url)
+                .then()
+                .log().all()
+                .extract().response();
+        return response;
+    }
 }
 

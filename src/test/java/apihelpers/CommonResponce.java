@@ -29,7 +29,7 @@ public class CommonResponce {
         if (actualValue.equals(expectedValue)) {
             Allure.addAttachment("Результаты проверки на соответствие ожидаемого значения поля фактическому", "text/plain", validationMessage);
         } else {
-            throw new AssertionError("Значение поля " + fieldName + " не совпадает с ожидаемым значением: " + expectedValue);
+            throw new AssertionError("Фактическое значение поля " + fieldName + " = " + actualValue + "." + " Значение не совпадает с ожидаемым результатом: " + expectedValue);
         }
     }
 }

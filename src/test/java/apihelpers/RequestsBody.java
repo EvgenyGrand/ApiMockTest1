@@ -19,4 +19,9 @@ public class RequestsBody {
         activationCode.put("code",code );
         return activationCode;
     }
+    public static Map<String, Object> getQrInfo(String code) {
+        Map<String, Object> getQrInfo = new HashMap<>();
+        getQrInfo.put("code", code);
+        return getQrInfo;
+    }
 }

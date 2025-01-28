@@ -2,11 +2,9 @@ package service;
 
 import com.github.tomakehurst.wiremock.client.WireMock;
 
-import static service.MockResponse.activationCodeResponse;
-import static service.MockResponse.registrationCodeResponse;
+import static service.MockResponse.*;
 
 public class StubsService {
-
 
 
     public void setupStubRegistration() {
@@ -28,5 +26,14 @@ public class StubsService {
                         .withStatus(200)
                         .withHeader("Content-Type", "application/json")
                         .withBody(activationCodeResponse)));
+    }
+
+    public void setupStubGetInfo() {
+        WireMock.stubFor(WireMock.get(WireMock.urlEqualTo("/code/info?code=QWERTY123"))
+                .withHeader("Content-Type", WireMock.equalTo("application/json"))
+                .willReturn(WireMock.aResponse()
+                        .withStatus(200)
+                        .withHeader("Content-Type", "application/json")
+                        .withBody(getCodeInfoResponse)));
     }
 }
