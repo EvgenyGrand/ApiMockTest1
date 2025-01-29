@@ -1,7 +1,5 @@
 package apihelpers;
 
-import tests.BaseTest;
-
 import java.util.HashMap;
 import java.util.Map;
 

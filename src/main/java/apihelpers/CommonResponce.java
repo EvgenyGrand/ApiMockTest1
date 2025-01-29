@@ -1,13 +1,8 @@
 package apihelpers;
 
 import io.qameta.allure.Allure;
-import io.qameta.allure.Attachment;
 import io.qameta.allure.Step;
 import io.restassured.response.Response;
-import org.junit.jupiter.api.Assertions;
-
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.equalTo;
 
 public class CommonResponce {
 

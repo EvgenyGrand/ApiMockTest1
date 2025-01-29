@@ -1,7 +1,7 @@
 package apihelpers;
 
+
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import io.qameta.allure.Allure;
 import io.qameta.allure.Step;
 import io.restassured.RestAssured;
@@ -11,9 +11,8 @@ import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 import io.restassured.specification.ResponseSpecification;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
-import java.util.HashMap;
-import java.util.IdentityHashMap;
 import java.util.Map;
 
 import static io.restassured.RestAssured.given;
@@ -40,7 +39,8 @@ public class ApiHelpers extends RequestsBody {
 
     public static void attacheRequestBodyToAllureReport(Object body) {
         try {
-            Allure.addAttachment("Тело запроса", "application/json", new ObjectMapper().writerWithDefaultPrettyPrinter().writeValueAsString(body));
+            Allure.addAttachment("Тело запроса", "application/json",
+                    new ObjectMapper().writerWithDefaultPrettyPrinter().writeValueAsString(body));
         } catch (JsonProcessingException e) {
             Allure.addAttachment("Тело запроса", "text/plain", body.toString(), "txt");
         }
@@ -58,7 +58,7 @@ public class ApiHelpers extends RequestsBody {
         try {
             Allure.addAttachment("Параметры запроса", "application/json",
                     new ObjectMapper().writerWithDefaultPrettyPrinter().writeValueAsString(queryParam));
-        } catch (JsonProcessingException e) {
+        } catch (Exception e) {
             Allure.addAttachment("Параметры запроса", "text/plain", queryParam.toString(), "txt");
         }
     }

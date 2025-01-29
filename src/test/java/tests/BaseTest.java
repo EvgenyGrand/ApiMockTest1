@@ -1,8 +1,6 @@
 package tests;
 
 import apihelpers.ApiHelpers;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import io.restassured.path.json.JsonPath;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import service.WireMockServerSetup;
