@@ -9,6 +9,7 @@ public abstract class BaseTest extends ApiHelpers {
 
 
     public static String code;
+    public static String expectedCode = "UUID123";
 
         public WireMockServerSetup wireMockSetup;
 

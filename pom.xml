@@ -18,6 +18,7 @@
         <allure.version>2.14.0</allure.version>
         <jackson-core>2.13.0</jackson-core>
         <jackson-databind>2.13.0</jackson-databind>
+        <h2database>2.1.214</h2database>
     </properties>
 
     <dependencies>
@@ -97,6 +98,13 @@
             <artifactId>allure-rest-assured</artifactId>
             <version>2.28.0</version>
         </dependency>
+
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <version>${h2database}</version>
+        </dependency>
+
         <dependency>
             <groupId>io.rest-assured</groupId>
             <artifactId>rest-assured</artifactId>
