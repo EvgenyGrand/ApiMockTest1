@@ -7,7 +7,6 @@ import apihelpers.RequestsBody;
 import dataBase.SqlExecutor;
 import io.qameta.allure.*;
 import io.restassured.response.Response;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
@@ -71,7 +70,7 @@ public class CodeTest extends BaseTest {
             SqlExecutor.addQRCode(BaseTest.expectedCode);
         });
         Allure.step("Проверяем соответствия фактической записи в БД ожидаемой", () -> {
-            Assertions.assertEquals(SqlExecutor.getQRCodeById(1), BaseTest.expectedCode);
+            SqlExecutor.checkVerifyQrCodeInDb(1, BaseTest.expectedCode);
         });
     }
 }
