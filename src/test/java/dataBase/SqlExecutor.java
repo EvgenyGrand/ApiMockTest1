@@ -27,8 +27,10 @@ public class SqlExecutor {
              PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
             preparedStatement.setString(1, qrCode);
             preparedStatement.executeUpdate();
+            Allure.step("Создаем запись в БД с qr кодом: " + qrCode);
         } catch (SQLException e) {
             e.printStackTrace();
+            Allure.step("Ошибка при создании записи в БД с qr кодом: " + qrCode + ". Ошибка: " + e.getMessage());
         }
     }
 
