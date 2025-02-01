@@ -4,6 +4,7 @@ import io.qameta.allure.Allure;
 import io.qameta.allure.Step;
 import org.junit.jupiter.api.Assertions;
 
+
 import java.sql.*;
 
 public class SqlExecutor {
@@ -61,6 +62,4 @@ public class SqlExecutor {
         Assertions.assertEquals(expectedQrCode, actualQrCode, "QR-коды не совпадают!");
         Allure.step("Фактический QR-код: " + actualQrCode + ", Ожидаемый QR-код: " + expectedQrCode);
     }
-
 }
-
