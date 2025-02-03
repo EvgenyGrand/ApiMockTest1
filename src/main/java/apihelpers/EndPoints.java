@@ -1,8 +1,10 @@
 package apihelpers;
 
+import utils.PropertyLoader;
+
 public class EndPoints {
 
-    public static final String baseUrl = "http://localhost:8080";
+    public static final String baseUrl = PropertyLoader.getProperty("BaseUrl");
 
     public static String postRegistrationCode = "/code/registration";
 

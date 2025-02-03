@@ -32,9 +32,9 @@ public class ApiHelpers extends RequestsBody {
                 .build();
     }
 
-    public static void installSpecification(RequestSpecification request, ResponseSpecification responce) {
+    public static void installSpecification(RequestSpecification request, ResponseSpecification response) {
         RestAssured.requestSpecification = request;
-        RestAssured.responseSpecification = responce;
+        RestAssured.responseSpecification = response;
     }
 
     public static void attacheRequestBodyToAllureReport(Object body) {
