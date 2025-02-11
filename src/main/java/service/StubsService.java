@@ -29,8 +29,17 @@ public class StubsService {
                         .withBody(activationCodeResponse)));
     }
 
-    public void setupStubGetInfo() {
+    public void setupStubGetInfoFirstValue() {
         WireMock.stubFor(WireMock.get(WireMock.urlEqualTo("/code/info?code=QWERTY123"))
+                .withHeader("Content-Type", WireMock.equalTo("application/json"))
+                .willReturn(WireMock.aResponse()
+                        .withStatus(200)
+                        .withHeader("Content-Type", "application/json")
+                        .withBody(getCodeInfoResponse)));
+    }
+
+    public void setupStubGetInfoSecondValue() {
+        WireMock.stubFor(WireMock.get(WireMock.urlEqualTo("/code/info?code=QWERTY126"))
                 .withHeader("Content-Type", WireMock.equalTo("application/json"))
                 .willReturn(WireMock.aResponse()
                         .withStatus(200)

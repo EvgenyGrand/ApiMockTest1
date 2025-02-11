@@ -10,6 +10,8 @@ import io.restassured.response.Response;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 
 public class CodeTest extends BaseTest {
@@ -31,13 +33,20 @@ public class CodeTest extends BaseTest {
         });
     }
 
+    // Не забыть! В JUnit 5, если тест параметризован надо убрать аннотацию @Test, оставить только @ParameterizedTest
     @Feature("Платежный qr")
     @DisplayName("Тест на проверку активации qr ")
     @Severity(SeverityLevel.BLOCKER)
-    @Test
     @Order(2)
     @Step("Активация qr")
-    public void activationCodeTest() {
+    @ParameterizedTest(name = "Тест на проверку активации qr => queryParam={0}")
+    // подумать как передать параметр DisplayName
+    @CsvSource({
+            "QWERTY123",
+            "QWERTY126"
+    })
+
+    public void activationCodeTest(String queryParam) {
         Allure.step("Регистрация qr", () -> {
             response = ApiHelpers.postRequestWithBody(EndPoints.postRegistrationCode, RequestsBody.registrationQr());
             CommonResponce.checkStatusOk(response, 200);
@@ -52,9 +61,9 @@ public class CodeTest extends BaseTest {
         });
 
         Allure.step("Получение информации о qr", () -> {
-            response = ApiHelpers.getRequestWithQueryParams(EndPoints.getCodeInfo, RequestsBody.getQrInfo(BaseTest.code));
+            response = ApiHelpers.getRequestWithQueryParams(EndPoints.getCodeInfo, RequestsBody.getQrInfo(queryParam));
             CommonResponce.checkStatusOk(response, 200);
-            CommonResponce.checkFieldValue(response, "data.info", BaseTest.expectedCode);
+            CommonResponce.checkFieldValue(response, "data.status", BaseTest.getStatus);
         });
     }
 

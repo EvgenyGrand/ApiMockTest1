@@ -19,6 +19,7 @@
         <jackson-core>2.13.0</jackson-core>
         <jackson-databind>2.13.0</jackson-databind>
         <h2database>2.1.214</h2database>
+        <junit-jupiter-params>5.9.3</junit-jupiter-params>
     </properties>
 
     <dependencies>
@@ -35,7 +36,12 @@
             <version>${junit.jupiter.version}</version>
             <scope>test</scope>
         </dependency>
-
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-params</artifactId>
+            <version>${junit-jupiter-params}</version>
+            <scope>test</scope>
+        </dependency>
         <dependency>
             <groupId>io.rest-assured</groupId>
             <artifactId>rest-assured</artifactId>

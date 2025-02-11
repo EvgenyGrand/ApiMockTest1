@@ -23,7 +23,8 @@ public class WireMockServerSetup {
         StubsService stubsService = new StubsService();
         stubsService.setupStubRegistration();
         stubsService.setupStubActivation();
-        stubsService.setupStubGetInfo();
+        stubsService.setupStubGetInfoFirstValue();
+        stubsService.setupStubGetInfoSecondValue();
     }
 
     public void stopServer() {
