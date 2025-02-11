@@ -20,7 +20,6 @@ public class CodeTest extends BaseTest {
 
     @Feature("Платежный qr")
     @DisplayName("Тест на проверку регистрации qr ")
-    @Severity(SeverityLevel.BLOCKER)
     @Test
     @Order(1)
     @Step("Создание qr")
@@ -36,7 +35,6 @@ public class CodeTest extends BaseTest {
     // Не забыть! В JUnit 5, если тест параметризован надо убрать аннотацию @Test, оставить только @ParameterizedTest
     @Feature("Платежный qr")
     @DisplayName("Тест на проверку активации qr ")
-    @Severity(SeverityLevel.BLOCKER)
     @Order(2)
     @Step("Активация qr")
     @ParameterizedTest(name = "Тест на проверку активации qr => queryParam={0}")
@@ -69,7 +67,6 @@ public class CodeTest extends BaseTest {
 
     @Feature("Платежный qr")
     @DisplayName("Тест на проверку наличия qr в БД ")
-    @Severity(SeverityLevel.BLOCKER)
     @Test
     @Order(3)
     @Step("Проверяем наличие qr в БД")
