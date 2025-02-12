@@ -1,4 +1,4 @@
-package apihelpers;
+package api.apihelpers;
 
 
 import com.fasterxml.jackson.core.JsonProcessingException;

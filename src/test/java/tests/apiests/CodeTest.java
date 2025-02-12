@@ -1,10 +1,10 @@
 package tests.apiests;
 
-import apihelpers.ApiHelpers;
-import apihelpers.CommonResponce;
-import apihelpers.EndPoints;
-import apihelpers.RequestsBody;
-import dataBase.SqlExecutor;
+import api.apihelpers.ApiHelpers;
+import api.apihelpers.CommonResponce;
+import api.apihelpers.EndPoints;
+import api.apihelpers.RequestsBody;
+import api.dataBase.SqlExecutor;
 import io.qameta.allure.*;
 import io.restassured.response.Response;
 import org.junit.jupiter.api.DisplayName;

@@ -1,6 +1,6 @@
-package dataBase;
+package api.dataBase;
 
-import utils.PropertyLoader;
+import api.utils.PropertyLoader;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

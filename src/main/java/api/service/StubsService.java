@@ -1,9 +1,9 @@
-package service;
+package api.service;
 
 
 import com.github.tomakehurst.wiremock.client.WireMock;
 
-import static service.MockResponse.*;
+import static api.service.MockResponse.*;
 
 public class StubsService {
 

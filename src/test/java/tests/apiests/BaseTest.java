@@ -1,9 +1,9 @@
 package tests.apiests;
 
-import apihelpers.ApiHelpers;
+import api.apihelpers.ApiHelpers;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
-import service.WireMockServerSetup;
+import api.service.WireMockServerSetup;
 
 public abstract class BaseTest extends ApiHelpers {
 

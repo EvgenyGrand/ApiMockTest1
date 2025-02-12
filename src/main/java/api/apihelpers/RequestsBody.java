@@ -1,4 +1,4 @@
-package apihelpers;
+package api.apihelpers;
 
 import java.util.HashMap;
 import java.util.Map;

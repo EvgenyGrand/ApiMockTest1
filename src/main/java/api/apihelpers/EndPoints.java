@@ -1,6 +1,6 @@
-package apihelpers;
+package api.apihelpers;
 
-import utils.PropertyLoader;
+import api.utils.PropertyLoader;
 
 public class EndPoints {
 

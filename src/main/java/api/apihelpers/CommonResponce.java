@@ -1,4 +1,4 @@
-package apihelpers;
+package api.apihelpers;
 
 import io.qameta.allure.Allure;
 import io.qameta.allure.Step;

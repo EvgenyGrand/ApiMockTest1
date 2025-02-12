@@ -1,4 +1,4 @@
-package dataBase;
+package api.dataBase;
 
 import io.qameta.allure.Allure;
 import io.qameta.allure.Step;
