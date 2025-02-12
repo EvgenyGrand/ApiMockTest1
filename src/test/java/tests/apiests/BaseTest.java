@@ -1,4 +1,4 @@
-package tests;
+package tests.apiests;
 
 import apihelpers.ApiHelpers;
 import org.junit.jupiter.api.AfterEach;

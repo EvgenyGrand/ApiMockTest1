@@ -1,4 +1,4 @@
-package tests;
+package tests.apiests;
 
 import apihelpers.ApiHelpers;
 import apihelpers.CommonResponce;

@@ -1,4 +1,4 @@
-package uitests;
+package tests.uitests;
 
 import com.codeborne.selenide.Configuration;
 
