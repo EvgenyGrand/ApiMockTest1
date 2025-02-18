@@ -12,5 +12,6 @@ public class SelenideConfiguration {
         Configuration.screenshots = true;
         Configuration.browserSize = "1920x1080";
         Configuration.reopenBrowserOnFail = true;
+        //Configuration.holdBrowserOpen = true;
     }
 }

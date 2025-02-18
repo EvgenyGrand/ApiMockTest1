@@ -37,7 +37,7 @@ public class CodeTest extends BaseTest {
     @DisplayName("Тест на проверку активации qr ")
     @Order(2)
     @Step("Активация qr")
-    @ParameterizedTest(name = "Тест на проверку активации qr => queryParam={0}")
+    @ParameterizedTest(name = "Тест на проверку активации qr с параметром ={0}")
     // подумать как передать параметр DisplayName
     @CsvSource({
             "QWERTY123",
