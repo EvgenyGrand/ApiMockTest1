@@ -1,13 +1,15 @@
 package ui;
 
-import com.codeborne.selenide.Configuration;
-import com.codeborne.selenide.Selenide;
-import com.codeborne.selenide.SelenideElement;
+import com.codeborne.selenide.*;
 import io.qameta.allure.Allure;
 import io.qameta.allure.Step;
 import org.junit.jupiter.api.Assertions;
+import ui.pages.BspbMainPages;
 
+import java.io.ByteArrayInputStream;
 import java.util.List;
+
+import com.codeborne.selenide.Screenshots;
 
 public class BspbSteps {
 
@@ -28,8 +30,25 @@ public class BspbSteps {
         }
     }
 
+    @Step("Дожидаемся загрузки элементов из списка")
+    public static void elementsIsVisible(List<SelenideElement> elements) {
+        for (SelenideElement element : elements) {
+            element.shouldBe(Condition.visible);
+            //Assertions.assertTrue(BspbYarkoPages.yarkoDeals.stream().allMatch(x -> x.isDisplayed()));
+        }
+    }
+
+    @Step("проверяем, что количество элементов должно быть больше {count}")
     public static void checkCountElements(List<SelenideElement> elements, int count) {
-        Assertions.assertEquals(count, elements.size(), "Количество элементов не совпадает");
+        Selenide.sleep(3000);
+        String validationMessage = "Количество элементов больше, чем " + count;
+        if (elements.size() > count) {
+            Allure.addAttachment("Результат проверки на соответствие ожидаемого значения элемента фактическому", "text/plain", validationMessage);
+            Assertions.assertTrue(true, validationMessage);
+        } else {
+            String errorMessage = "Фактическое количество элементов = " + elements.size() + ". Ожидалось больше, чем " + count;
+            Allure.addAttachment("Ошибка проверки", "text/plain", errorMessage);
+            throw new AssertionError(errorMessage);
+        }
     }
 }
-

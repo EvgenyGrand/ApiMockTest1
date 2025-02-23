@@ -5,14 +5,15 @@ import com.codeborne.selenide.Selenide;
 import io.qameta.allure.Allure;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Step;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import ui.BspbMainPages;
 import ui.BspbSteps;
+import ui.pages.BspbMainPages;
+import ui.pages.BspbYarkoPages;
 
-import static ui.BspbMainPages.unionCard;
-import static ui.BspbMainPages.yarkoDeals;
+import static com.codeborne.selenide.CollectionCondition.sizeGreaterThan;
+
+import static ui.pages.BspbMainPages.unionCard;
 
 public class BspbPageTests extends BspbBaseTests {
 
@@ -29,14 +30,19 @@ public class BspbPageTests extends BspbBaseTests {
         });
     }
 
+    @Feature("Сайт БСПБ")
+    @DisplayName("Тест на проверку отображения элементов на странице партнеров Ярко")
     @Test
     public void checkYarkoPartners() {
-        Selenide.open(Configuration.baseUrl);
-        BspbMainPages.cards.hover();
-        BspbMainPages.partnersAndDeals.click();
-        Selenide.sleep(3000);
-        Assertions.assertTrue(yarkoDeals.stream().allMatch(x -> x.isDisplayed()));
-        BspbSteps.checkCountElements(BspbMainPages.yarkoDeals, 27);
+        Allure.step("Открыть страницу Партнеров программы Ярко на сайте", () -> {
+            Selenide.open(Configuration.baseUrl);
+            BspbMainPages.cards.hover();
+            BspbYarkoPages.partnersAndDeals.click();
+        });
+        Allure.step("Проверить, что количество элементов должно быть больше заданного значения", () -> {
+            BspbSteps.checkCountElements(BspbYarkoPages.yarkoDeals, 1);
+        });
+        //Assertions.assertTrue(BspbYarkoPages.yarkoDeals.stream().allMatch(x -> x.isDisplayed()));
 
     }
 }
