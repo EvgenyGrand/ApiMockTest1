@@ -44,7 +44,7 @@ pipeline {
             steps {
                 script {
                     // Запуск сервера Allure для отображения отчета
-                    bat 'allure serve target\allure-results'
+                    bat 'allure serve target/allure-results'
                 }
             }
         }
