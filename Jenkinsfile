@@ -1,5 +1,5 @@
 timeout(15) {
-    node("windows-agent") {
+    node("Мастер") {
        echo "Download project"
        }
     }
