@@ -1,4 +1,4 @@
-package tests.uitests;
+package tests.uiTests;
 
 import org.junit.jupiter.api.BeforeEach;
 import ui.SelenideConfiguration;

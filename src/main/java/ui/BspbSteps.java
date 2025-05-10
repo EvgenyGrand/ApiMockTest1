@@ -6,10 +6,7 @@ import io.qameta.allure.Step;
 import org.junit.jupiter.api.Assertions;
 import ui.pages.BspbMainPages;
 
-import java.io.ByteArrayInputStream;
 import java.util.List;
-
-import com.codeborne.selenide.Screenshots;
 
 public class BspbSteps {
 

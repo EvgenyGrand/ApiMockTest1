@@ -1,4 +1,4 @@
-package tests.uitests;
+package tests.uiTests;
 
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
@@ -10,8 +10,6 @@ import org.junit.jupiter.api.Test;
 import ui.BspbSteps;
 import ui.pages.BspbMainPages;
 import ui.pages.BspbYarkoPages;
-
-import static com.codeborne.selenide.CollectionCondition.sizeGreaterThan;
 
 import static ui.pages.BspbMainPages.unionCard;
 
