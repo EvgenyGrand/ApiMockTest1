@@ -30,5 +30,32 @@ pipeline {
                 }
             }
         }
+
+        stage('Generate Allure Report') {
+            steps {
+                script {
+                    // Генерация отчета Allure
+                    bat 'mvn allure:report'
+                }
+            }
+        }
+
+        stage('Serve Allure Report') {
+            steps {
+                script {
+                    // Запуск сервера Allure для отображения отчета
+                    bat 'allure serve target\allure-results'
+                }
+            }
+        }
+    }
+
+    post {
+        always {
+            // Сохранение результатов Allure для последующего анализа в Jenkins
+            allure([
+                results: [[path: 'target/allure-results']]
+            ])
+        }
     }
 }
