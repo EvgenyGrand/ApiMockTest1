@@ -39,24 +39,26 @@ pipeline {
             }
         }
 
-        stage('Serve Allure Report') {
+        stage('Publish Allure Report') {
             steps {
-                script {
-                    // Запуск сервера Allure для отображения отчета
-                    // Используйте '&' для запуска в фоновом режиме, если это необходимо
-                    bat 'allure serve target/allure-results'
-                }
+                // Публикация отчета Allure
+                allure([
+                    includeProperties: true,
+                    jdk: '',
+                    properties: [],
+                    reportBuildPolicy: 'ALWAYS',
+                    results: [[path: 'target/allure-results']] // Убедитесь, что путь указан правильно
+                ])
             }
         }
     }
 
     post {
         always {
-            // Сохранение результатов Allure для последующего анализа в Jenkins
-            allure([
-                results: [[path: 'target/allure-results']]
-            ])
+            // Здесь можно добавить дополнительные действия, например, очистку или уведомления
+            echo "Pipeline завершен"
         }
     }
 }
+
 
