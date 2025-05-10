@@ -9,7 +9,6 @@ pipeline {
         stage('Download Project') {
             steps {
                 echo "Downloading project"
-
                 // Checkout the code from Git
                 checkout scm: [
                     $class: 'GitSCM',
@@ -44,6 +43,7 @@ pipeline {
             steps {
                 script {
                     // Запуск сервера Allure для отображения отчета
+                    // Используйте '&' для запуска в фоновом режиме, если это необходимо
                     bat 'allure serve target/allure-results'
                 }
             }
@@ -59,3 +59,4 @@ pipeline {
         }
     }
 }
+
